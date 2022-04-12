@@ -32,7 +32,7 @@ export const createPost = (title,description, price, materials) => {
       userId:auth.currentUser.uid,
       like:[],
       numberLike:0,
-      date:Date(Date.now()),
+      date:Date(Date.now()), //cambiar por TIMESTAMP
         })
 }
 
@@ -62,8 +62,8 @@ export const createPost = (title,description, price, materials) => {
    const likesCount = dataLike.numberLike;
    if((dataLike.like).includes(userId)){
     await updateDoc(postRef,{
-like:arrayRemove(userId),
-numberLike: likesCount  -1,
+    like:arrayRemove(userId),
+    numberLike: likesCount  -1,
     });
    }else{
      await updateDoc(postRef,{
